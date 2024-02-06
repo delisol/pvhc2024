@@ -116,3 +116,4 @@ infAdjPVHC <-
                U.S. Bureau of Labor Statistics')
   
 gtsave(data = infAdjPVHC , filename = 'Inflation adjustement PVHC.pdf')  
+
