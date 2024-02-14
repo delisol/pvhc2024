@@ -343,17 +343,14 @@ ft
 
 ```{r ,  out.width='100%' , out.height='100%' , label = 'PandLcurrMonth'}
 ftCurr
-# htmltools::includeHTML(sprintf(here('PVHC P & L for %s.html' , format(as.Date(fy_to_date) , format = '%b %Y'))))
 ```
 
 \newpage
 
 #### Owner's draw, year to date
 
-```{r}
-# image_read("OwnersDrawDetail.png") %>% 
-#   image_trim()
-htmltools::includeHTML('OwnersDrawDetail.html')
+```{r ,  out.width='100%' , out.height='100%' , label = 'Owners Draw'}
+source(here('ownersDraw.R'))
+ft_od
 ```
-
 
