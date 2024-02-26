@@ -38,13 +38,6 @@ source(file = 'pvhc_functions_for_charts.r')
 source(file = 'pvhc_functions_ppp.r')
 ```
 
-```{r , label = 'update_date'}
-# UPDATE EACH MONTH
-# create date values
-# filterDte <- '2023-03-31'
-# reptDte <- 'March 31, 2023'
-```
-
 ```{r , label = 'import_gnucash_transactions'}
 # read in gnucash transaction report, all transactions to date 
 
@@ -61,14 +54,6 @@ pvhcAllTrans <- read_csv("C:/Users/dsole/OneDrive/Personal Vault/data/pvhc/pvhcA
   mutate(acct1 = str_replace_all(acct1 , 'Expenses' , 'Expense')) %>%
   mutate(acct1 = ifelse(
     str_detect(acct1 , "Own") , "Owners draw" , acct1))
-```
-
-```{r , label = 'PPP_included'}
-# exclude = '' (includes PPP)
-# exclude <- ''
-# cumTtl <- 
-#   mak_cumTtl(exclude = exclude)
-# subTitel <- mak_subtitel(exclude = exclude)
 ```
 
 ```{r, fig.width=7,fig.height=4.2 , label = 'cum_chart'}
@@ -218,7 +203,11 @@ expense <-
 netInc <- 
   bind_rows(income , expense) %>%
   ungroup() %>%
-  mutate(across(nextM:Dec, ~as.character(.))) %>%
+  # if statement for next month != 'Dec' 
+    {if (currM != 'Dec') {
+      mutate(. , across(nextM:Dec, ~as.character(.))) 
+    } else {.}} %>%
+#  mutate(across(nextM:Dec, ~as.character(.))) %>%
   adorn_totals(na.rm = T , fill = NA , name = 'Net Income') %>%
   mutate(acct1 = 
            ifelse(acct2 == 'Net Income' , acct2 , acct1)) %>%
@@ -260,9 +249,8 @@ netInc <-
   cols_width(columns=c('acct2') ~ pct(10)) %>%
   cols_width(columns=c('ytd') ~ pct(7)) %>%
   opt_stylize(style = 1 , color = 'blue') %>%
-  tab_options(table.font.size = 18) %>%
+  tab_options(table.font.size = 12) %>%
   opt_table_lines(extent = 'all')
-
 ```
 
 \newpage
@@ -305,9 +293,10 @@ netLessOD %>%
   cols_width(columns=c('acct2') ~ pct(10)) %>%
   cols_width(columns=c('ytd') ~ pct(7)) %>%
   opt_stylize(style = 1 , color = 'blue') %>%
-  tab_options(table.font.size = 18) %>%
+  tab_options(table.font.size = 12) %>%
   opt_table_lines(extent = 'all')
 ```
+
 
 
 ```{r ,  include=FALSE , label = 'webshot_table'}
