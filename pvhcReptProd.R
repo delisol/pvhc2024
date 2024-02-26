@@ -3,13 +3,14 @@
 # stores in appropriate Drive directory
 
 # pass report date values
-filterDte <- '2024-01-31'
-fy_start <- '2024-01-01'
-curr_mo_start <- '2024-01-01'
+filterDte <- '2023-12-31'
+fy_start <- '2023-01-01'
+curr_mo_start <- '2023-12-01'
 fy_to_date <- filterDte
 reptDte <- format(as.Date(fy_to_date) , '%B %d, %Y')
-currM <- 'Jan' # month of report
-nextM <- 'Feb' # change to next month after report date
+currM <- 'Dec' # month of report
+nextM <- '' # change to next month after report date
+
 
 
 rmarkdown::render('PvhcMonthlyReport.Rmd' , 
@@ -21,8 +22,8 @@ rmarkdown::render('PvhcMonthlyReport.Rmd' ,
 # convert html outut from render to pdf
 # see https://search.r-project.org/CRAN/refmans/psycModel/html/html_to_pdf.html
 psycModel::html_to_pdf(file_path = 
-                         sprintf('C:\\Users\\dsole\\OneDrive\\Documents\\FinancialPlanning\\PVHC financials\\2024\\PVHC Monthly Report for %s.html' , reptDte) ,
-                       scale = 0.75)
+                         sprintf('C:\\Users\\dsole\\OneDrive\\Documents\\FinancialPlanning\\PVHC financials\\2024\\PVHC Monthly Report for %s.html' , reptDte) , 
+                       scale = .90)
 
 zip::zip(sprintf('C:\\Users\\dsole\\OneDrive\\Documents\\FinancialPlanning\\PVHC financials\\2023\\%s.zip' , reptDte) , 
          files = c(
