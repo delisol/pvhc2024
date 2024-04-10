@@ -3,13 +3,13 @@
 # stores in appropriate Drive directory
 
 # pass report date values
-filterDte <- '2023-12-31'
-fy_start <- '2023-01-01'
-curr_mo_start <- '2023-12-01'
+filterDte <- '2024-02-29'
+fy_start <- '2024-01-01'
+curr_mo_start <- '2024-02-01'
 fy_to_date <- filterDte
 reptDte <- format(as.Date(fy_to_date) , '%B %d, %Y')
-currM <- 'Dec' # month of report
-nextM <- '' # change to next month after report date
+currM <- 'Feb' # month of report
+nextM <- 'Mar' # change to next month after report date
 
 
 
