@@ -1,6 +1,6 @@
 ---
 title: "`r sprintf('PVHC Monthly Report for %s' , reptDte)`"
-date: "`r format(Sys.Date() , format='%B %d, %Y')`"
+date: "`r sprintf('Produced on %s.' , format(Sys.Date() , format='%B %d, %Y'))`"
 output:  html_document
 
 ---
