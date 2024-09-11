@@ -3,19 +3,29 @@
 # stores in appropriate Drive directory
 
 # pass report date values
-filterDte <- '2024-07-31' #last day of report period
+filterDte <- '2024-08-31' #last day of report period
 fy_start <- '2024-01-01'
-curr_mo_start <- '2024-07-01'
+curr_mo_start <- '2024-08-01'
 fy_to_date <- filterDte
 reptDte <- format(as.Date(fy_to_date) , '%B %d, %Y')
-currM <- 'Jul' # month of report
-nextM <- 'Aug' # change to next month after report date
+currM <- 'Aug' # month of report
+nextM <- 'Sep' # change to next month after report date
 
 
 rmarkdown::render('PvhcMonthlyReport.Rmd' , 
                   output_format = 'html_document' , 
                   output_dir = 'C:\\Users\\dsole\\OneDrive\\Documents\\FinancialPlanning\\PVHC financials\\2024' , 
                   output_file = sprintf('PVHC Monthly Report for %s' , reptDte))
+
+# convert html output from render to pdf
+
+html_file <- 
+  sprintf('C:\\Users\\dsole\\OneDrive\\Documents\\FinancialPlanning\\PVHC financials\\2024\\PVHC Monthly Report for %s.html' , reptDte)
+pdf_file <- 
+  sprintf('C:\\Users\\dsole\\OneDrive\\Documents\\FinancialPlanning\\PVHC financials\\2024\\PVHC Monthly Report for %s.pdf' , reptDte)
+
+pagedown::chrome_print(input = html_file , output = pdf_file)
+
 
 
 # convert html outut from render to pdf
