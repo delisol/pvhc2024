@@ -187,9 +187,6 @@ plotly::ggplotly(mXm , tooltip = c('textYear' , 'text' , 'x' , 'color')) %>%
 source(file = 'pvhc_functions_for_table.r')
 ```
 
-\newpage
-
-
 ```{r , label = 'income and expense'}
 income <- 
   makType(t = quote('Income'))
