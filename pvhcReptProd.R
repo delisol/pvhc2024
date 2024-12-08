@@ -3,13 +3,13 @@
 # stores in appropriate Drive directory
 
 # pass report date values
-filterDte <- '2024-08-31' #last day of report period
+filterDte <- '2024-11-30' #last day of report period
 fy_start <- '2024-01-01'
-curr_mo_start <- '2024-08-01'
+curr_mo_start <- '2024-11-01'
 fy_to_date <- filterDte
 reptDte <- format(as.Date(fy_to_date) , '%B %d, %Y')
-currM <- 'Aug' # month of report
-nextM <- 'Sep' # change to next month after report date
+currM <- 'Nov' # month of report
+nextM <- 'Dec' # change to next month after report date
 
 
 rmarkdown::render('PvhcMonthlyReport.Rmd' , 
@@ -23,10 +23,6 @@ html_file <-
   sprintf('C:\\Users\\dsole\\OneDrive\\Documents\\FinancialPlanning\\PVHC financials\\2024\\PVHC Monthly Report for %s.html' , reptDte)
 pdf_file <- 
   sprintf('C:\\Users\\dsole\\OneDrive\\Documents\\FinancialPlanning\\PVHC financials\\2024\\PVHC Monthly Report for %s.pdf' , reptDte)
-
-pagedown::chrome_print(input = html_file , output = pdf_file)
-
-
 
 # convert html outut from render to pdf
 # see https://search.r-project.org/CRAN/refmans/psycModel/html/html_to_pdf.html

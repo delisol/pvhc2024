@@ -131,7 +131,7 @@ no_border <- fp_border(color = 'white' , width = 0)
 
 ft <- 
   flextable(preTab) %>%
-  line_spacing(space = 0.5 ,
+  line_spacing(space = 0.2 ,
                i = ~ acct1 == acct2)  %>%
   hline(i = ~ is.na(acct2) & acct1 != 'Income' & acct1 != 'Expense'
         & is.na(subhead)) %>%
@@ -193,7 +193,7 @@ ft <-
                        format(as.Date(fy_to_date) , '%B %d, %Y')))))
 
 
-ft  
+ft
 #
 
 save_as_html(ft , path= sprintf('PVHC Profit & Loss for %s.html' , reptDte))

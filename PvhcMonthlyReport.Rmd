@@ -195,7 +195,7 @@ expense <-
   makType(t = quote('Expense'))
 
 ```
-
+\newpage
 ```{r, label = 'net income table'}
 netInc <- 
   bind_rows(income , expense) %>%
@@ -246,6 +246,7 @@ netInc <-
   cols_width(columns=c('acct2') ~ pct(10)) %>%
   cols_width(columns=c('ytd') ~ pct(7)) %>%
   opt_stylize(style = 1 , color = 'blue') %>%
+  tab_options(table.width = pct(90)) %>%
   tab_options(table.font.size = 12) %>%
   opt_table_lines(extent = 'all')
 ```
@@ -311,8 +312,6 @@ netLessOD %>%
 
 \newpage
 
-#### Profit and loss, year to date
-
 ```{r ,  out.width='100%' , out.height='100%' , label = 'PandLYTD'}
 source(here('pvhcPandL.R'))
 ft
@@ -332,9 +331,7 @@ ftCurr
 ```
 
 \newpage
-
 #### Owner's draw, year to date
-
 ```{r ,  out.width='100%' , out.height='100%' , label = 'Owners Draw'}
 source(here('ownersDraw.R'))
 ft_od
