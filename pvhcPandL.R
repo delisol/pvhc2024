@@ -190,7 +190,8 @@ ft <-
         height = 1.1), 
       as_chunk(sprintf('for the period %s to %s' , 
                        str_remove(format(as.Date(fy_start) , '%B %d, %Y') , '0') , 
-                       format(as.Date(fy_to_date) , '%B %d, %Y')))))
+                       format(as.Date(fy_to_date) , '%B %d, %Y'))))) %>%
+  line_spacing(. , space = 0.9 , part = 'body')
 
 
 ft

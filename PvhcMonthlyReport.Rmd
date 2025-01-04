@@ -312,7 +312,7 @@ netLessOD %>%
 
 \newpage
 
-```{r ,  out.width='100%' , out.height='100%' , label = 'PandLYTD'}
+```{r ,  out.width='90%' , out.height='90%' , label = 'PandLYTD'}
 source(here('pvhcPandL.R'))
 ft
 # htmltools::includeHTML(sprintf(here('PVHC Profit & Loss for %s.html') , reptDte))
